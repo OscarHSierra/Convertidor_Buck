@@ -166,9 +166,10 @@ function dibujar_linea()
     var yValues2=[];
     contador=0;
     aux=0;
-    while (contador <8 )
+
+    while (contador < 21 )
     {
-        aux=Math.pow(10,contador-2);
+        aux=Math.pow(2,contador-2);
         res2=20* (Math.log10( Math.sqrt(a*a)/ (Math.sqrt (b*b*aux*aux*aux*aux-2*(b-0.5*c*c)*aux*aux+1) ) ));
         yValues2[contador]=res2.toFixed(2);
         xValues2[contador]=aux;
@@ -243,9 +244,9 @@ function dibujar_linea()
       aux=0;
       var signo=0;
 
-      while (contador <8 )
+      while (contador <21 )
       {
-          aux=Math.pow(10,contador-2);
+          aux=Math.pow(2,contador-2);
           if(a*c*aux*(b*b*aux*aux*aux*aux-(2*b-c*c)*aux*aux +1)>0)
           {
             signo=1;
