@@ -2,6 +2,7 @@
 
 function dibujar_linea()
 {
+    var r=document.getElementById("resultado");
     var Vg= document.getElementById("input_Vg");
     var Vd= document.getElementById("input_Vd");
     var Vo= document.getElementById("input_Vo");
@@ -104,7 +105,9 @@ function dibujar_linea()
     }
 
 
+
     Chart.defaults.global.defaultFontStyle = 'Bold'
+
     new Chart("myChart", {
       type: "line",
       data: {
@@ -158,11 +161,197 @@ function dibujar_linea()
        }   
     });
 
-}
+    var res2=0
+    var xValues2=[];
+    var yValues2=[];
+    contador=0;
+    aux=0;
+    while (contador <5 )
+    {
+        aux=Math.pow(10,contador-2);
+        res2=20* (Math.log10( 1/ (Math.sqrt (aux*aux+4) ) ));
+        yValues2[contador]=res2.toFixed(2);
+        xValues2[contador]=aux;
+
+        contador=contador+1;
+        console.log("aux="+aux+" bode="+res2);
+    }
    
 
+    new Chart("bode", {
+        type: "line",
+        data: {
+          labels: xValues2,
+          datasets: [{
+            label: "Bode planta magnitud",
+            borderWidth: 4,
+            borderColor: "rgba(0,0,100,0.8)",
+            pointRadius:0.5,
+            data: yValues2,
+            fill: false
+          }]},
+          
+          options: {
+            
+          scales: {
+
+              xAxes: [
+                      {
+
+                          scaleLabel: 
+                          {
+                              display: true,
+                              labelString: 'Frecuencia rad/s',
+                              fontSize: 20,
+                              fontStyle: "bold",
+                              fontColor: "black"
+                          },                         
+                      }
+                      ],
+              yAxes: [
+                  {
+
+                      scaleLabel: 
+                      {
+                          display: true,
+                          labelString: '20log M',
+                          fontSize: 20,
+                          fontStyle: "bold",
+                          fontColor: "black"
+                      },
+                  }
+                  ]
+                  },
+              plugins: {
+                  title: {
+                      display: true,
+                      text: 'Bode magnitud',
+                      color: 'black',
+                      position: 'bottom',
+                      fontSize: 20,
+                      fontStyle: "bold",
+                      fontColor: "black"
+                   }
+              }
+         }   
+      });
+
+      var res2=0
+      var xValues3=[];
+      var yValues3=[];
+      contador=0;
+      aux=0;
+      while (contador <5 )
+      {
+          aux=Math.pow(10,contador-2);
+          res2=-Math.atan(aux/2)*180/Math.PI;
+          yValues3[contador]=res2.toFixed(2);
+          xValues3[contador]=aux;
+  
+          contador=contador+1;
+          console.log("aux="+aux+" bode="+res2);
+      }
+     
+  
+      new Chart("bodefase", {
+          type: "line",
+          data: {
+            labels: xValues3,
+            datasets: [{
+              label: "Bode planta magnitud",
+              borderWidth: 4,
+              borderColor: "rgba(0,0,100,0.8)",
+              pointRadius:0.5,
+              data: yValues3,
+              fill: false
+            }]},
+            
+            options: {
+              
+            scales: {
+  
+                xAxes: [
+                        {
+  
+                            scaleLabel: 
+                            {
+                                display: true,
+                                labelString: 'Frecuencia rad/s',
+                                fontSize: 20,
+                                fontStyle: "bold",
+                                fontColor: "black"
+                            },                         
+                        }
+                        ],
+                yAxes: [
+                    {
+  
+                        scaleLabel: 
+                        {
+                            display: true,
+                            labelString: 'Fase(grados)',
+                            fontSize: 20,
+                            fontStyle: "bold",
+                            fontColor: "black"
+                        },
+                    }
+                    ]
+                    },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Bode fase',
+                        color: 'black',
+                        position: 'bottom',
+                        fontSize: 20,
+                        fontStyle: "bold",
+                        fontColor: "black"
+                     }
+                }
+           }   
+        });
+
+      var Tuo=a/2;
+      var MF=52;
+      
+      var wo=Math.sqrt((R1+rl1+Ron1*D1)/(R1*L1*C1))    
+      var fo=wo/(2*Math.PI);
+      var fc=fs1/10;
+      var fz=fc * (Math.sqrt( (1-Math.sin((MF*Math.PI)/180)) / (1+Math.sin((MF*Math.PI)/180)) ) );
+      var fp=fc*(Math.sqrt((1+Math.sin(MF*Math.PI/180))/(1-Math.sin(MF*Math.PI/180))));
+      var wz=2*Math.PI*fz;
+      var wp=2*Math.PI*fp;
+      var fl=(1/10)*fc;
+      var wl=2*Math.PI*fl;
+      var Gco=Math.pow(fc/fo,2)*Math.sqrt(fz/fp)/Tuo;
+      
+    
 
 
+      console.log("wo="+wo);
+      console.log("fo="+fo);
+      console.log("Tuo="+Tuo);
+      console.log("fc="+fc);
+      console.log("fz="+fz);       
+      console.log("fp="+fp);
+      console.log("wz="+wz);
+      console.log("fl="+fl);
+      console.log("wl="+wl);
+      console.log("Gco="+Gco);
+
+      var Kp=Gco*(wl*wp-wl*wz+wp*wz)/(wp*wz);
+      var Ki=Gco*wl;
+      var Kd=Gco*(wl*wp-wl*wz+wp*wz-wp*wp)/(wp*wp*wz);
+
+      r.innerHTML="Kp="+Kp.toFixed(5)+"<br/>"+"Ki="+Ki.toFixed(5)+"<br/>"+"Kd="+ Kd.toFixed(5); 
+
+
+      console.log("Kp="+Kp);
+      console.log("Ki="+Ki);
+      console.log("Kd="+Kd);
+
+    }
+   
 
 
 

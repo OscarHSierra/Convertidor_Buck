@@ -33,31 +33,26 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
         </ul>
         <ul class="l">        
             <li>       
-                <p class="p__texto_sis" >Vg
-                    <input class="text" type="number" id="input_Vg" value="9" required/>
+                <p class="p__texto_sis" >Vg <input class="text" type="number" id="input_Vg" value="9" required/>
                 </p>
             </li>
             <li>       
-                <p class="p__texto_sis" >Vd
-                    <input class="text" type="number" id="input_Vd" value="0.525" required />
+                <p class="p__texto_sis" >Vd <input class="text" type="number" id="input_Vd" value="0.525" required />
                 </p>
             </li>
             <li>       
-                <p class="p__texto_sis" >Vo
-                    <input class="text" type="number" id="input_Vo" value="5" required/>
+                <p class="p__texto_sis" >Vo <input class="text" type="number" id="input_Vo" value="5" required/>
                 </p>
             </li>
             <li>       
-                <p class="p__texto_sis" >Ron
-                    <input class="text" type="number" id="input_Ron" value="0.065" required />
+                <p class="p__texto_sis" >Ron <input class="text" type="number" id="input_Ron" value="0.065" required />
                 </p>
             </li>
         </ul>  
         <ul class="l">        
 
             <li>       
-                <p class="p__texto_sis" >R
-                    <input class="text" type="number" id="input_R" value="2000" required/>
+                <p class="p__texto_sis" >R <input class="text" type="number" id="input_R" value="2000" required/>
                 </p>
             </li>
             <li>       
@@ -77,7 +72,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
             </li>
             <li>       
                 <p class="p__texto_sis" >fs(Hz)
-                    <input class="text" type="number" id="input_fs" value="8000" required/>
+                    <input class="text" type="number" id="input_fs" value="80000" required/>
                 </p>
             </li>
         </ul>  
@@ -85,15 +80,35 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
         <ul style="justify-content: center;">        
             <li style= "justify-content: center;">
                 <p style="justify-content: center;">
-                    <input class="boton" type="submit" id="boton" value="Graficar"/>
+                    <input class="boton" type="submit" id="boton" value="Calcular"/>
                 </p>
             </li>      
+            <li style="text-align:-webkit-center ;">
+                <p class="res" id="resultado"></p>    
+            </li>
             <li style="text-align:-webkit-center ;">
                 <canvas id="myChart" style="width:100%;max-width:80vw;background-color:blanchedalmond;"></canvas>  
             </li>
             <li></li>
-
         </ul>
+
+        <ul style="justify-content: center;">        
+   
+            <li style="text-align:-webkit-center ;">
+                <canvas id="bode" style="width:100%;max-width:80vw;background-color:rgb(255, 255, 255);"></canvas>  
+            </li>
+            <li></li>
+        </ul>
+
+        <ul style="justify-content: center;">        
+   
+            <li style="text-align:-webkit-center ;">
+                <canvas id="bodefase" style="width:100%;max-width:80vw;background-color:rgb(255, 255, 255);"></canvas>  
+            </li>
+            <li></li>
+        </ul>  
+
+
     </section>
     <script src="./buck.js"></script>
     <footer class="footer">
