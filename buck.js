@@ -128,7 +128,7 @@ function dibujar_linea()
                         {
                             display: true,
                             labelString: 'Tiempo(uS)',
-                            fontSize: 20,
+                            fontSize: 15,
                             fontStyle: "bold",
                             fontColor: "black"
                         }
@@ -140,7 +140,7 @@ function dibujar_linea()
                     {
                         display: true,
                         labelString: 'Amplitud',
-                        fontSize: 20,
+                        fontSize: 15,
                         fontStyle: "bold",
                         fontColor: "black"
                     }
@@ -153,7 +153,7 @@ function dibujar_linea()
                     text: 'write heading here',
                     color: 'black',
                     position: 'bottom',
-                    fontSize: 20,
+                    fontSize: 15,
                     fontStyle: "bold",
                     fontColor: "black"
                  }
@@ -166,10 +166,10 @@ function dibujar_linea()
     var yValues2=[];
     contador=0;
     aux=0;
-    while (contador <5 )
+    while (contador <8 )
     {
         aux=Math.pow(10,contador-2);
-        res2=20* (Math.log10( 1/ (Math.sqrt (aux*aux+4) ) ));
+        res2=20* (Math.log10( Math.sqrt(a*a)/ (Math.sqrt (b*b*aux*aux*aux*aux-2*(b-0.5*c*c)*aux*aux+1) ) ));
         yValues2[contador]=res2.toFixed(2);
         xValues2[contador]=aux;
 
@@ -202,7 +202,7 @@ function dibujar_linea()
                           {
                               display: true,
                               labelString: 'Frecuencia rad/s',
-                              fontSize: 20,
+                              fontSize: 15,
                               fontStyle: "bold",
                               fontColor: "black"
                           },                         
@@ -215,7 +215,7 @@ function dibujar_linea()
                       {
                           display: true,
                           labelString: '20log M',
-                          fontSize: 20,
+                          fontSize: 15,
                           fontStyle: "bold",
                           fontColor: "black"
                       },
@@ -228,7 +228,7 @@ function dibujar_linea()
                       text: 'Bode magnitud',
                       color: 'black',
                       position: 'bottom',
-                      fontSize: 20,
+                      fontSize: 15,
                       fontStyle: "bold",
                       fontColor: "black"
                    }
@@ -241,10 +241,21 @@ function dibujar_linea()
       var yValues3=[];
       contador=0;
       aux=0;
-      while (contador <5 )
+      var signo=0;
+
+      while (contador <8 )
       {
           aux=Math.pow(10,contador-2);
-          res2=-Math.atan(aux/2)*180/Math.PI;
+          if(a*c*aux*(b*b*aux*aux*aux*aux-(2*b-c*c)*aux*aux +1)>0)
+          {
+            signo=1;
+          }
+          else
+          {
+            signo=-1
+          }
+      
+          res2=-90*signo-Math.atan((b*aux*aux-1)/(c*aux))*180/Math.PI;
           yValues3[contador]=res2.toFixed(2);
           xValues3[contador]=aux;
   
@@ -258,7 +269,7 @@ function dibujar_linea()
           data: {
             labels: xValues3,
             datasets: [{
-              label: "Bode planta magnitud",
+              label: "Bode planta fase",
               borderWidth: 4,
               borderColor: "rgba(0,0,100,0.8)",
               pointRadius:0.5,
@@ -277,7 +288,7 @@ function dibujar_linea()
                             {
                                 display: true,
                                 labelString: 'Frecuencia rad/s',
-                                fontSize: 20,
+                                fontSize: 15,
                                 fontStyle: "bold",
                                 fontColor: "black"
                             },                         
@@ -290,7 +301,7 @@ function dibujar_linea()
                         {
                             display: true,
                             labelString: 'Fase(grados)',
-                            fontSize: 20,
+                            fontSize: 15,
                             fontStyle: "bold",
                             fontColor: "black"
                         },
@@ -303,7 +314,7 @@ function dibujar_linea()
                         text: 'Bode fase',
                         color: 'black',
                         position: 'bottom',
-                        fontSize: 20,
+                        fontSize: 15,
                         fontStyle: "bold",
                         fontColor: "black"
                      }
