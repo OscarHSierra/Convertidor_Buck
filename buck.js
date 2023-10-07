@@ -28,7 +28,7 @@ function dibujar_linea()
     
     var IL1=0;
     var D1=0;
-    var Tm1=0;
+    var Tm=10;
     var Gd01=0;
     var w01=0;
     var f01=0;
@@ -73,6 +73,17 @@ function dibujar_linea()
     console.log("y1 "+cy1);
     cy2=-(b-50e-6*(c-50e-6))/(b+50e-6*(c+50e-6))
     console.log("y2 "+cy2);
+    
+    // cx=a*Tm*Tm/(4*b+2*c*Tm+Tm*Tm);
+    // console.log("x "+cx);
+    // cx1=2*a*Tm*Tm/(4*b+2*c*Tm+Tm*Tm);
+    // console.log("x1 "+cx1);
+    // cx2=a*Tm*Tm/(4*b+2*c*Tm+Tm*Tm);
+    // console.log("x2 "+cx2);
+    // cy1=(-8*b+2*Tm*Tm)/(4*b+2*c*Tm+Tm*Tm);
+    // console.log("y1 "+cy1);
+    // cy2=(4*b-2*c*Tm+Tm*Tm)/(4*b+2*c*Tm+Tm*Tm);
+    // console.log("y2 "+cy2);
     
 
 
@@ -136,6 +147,13 @@ function dibujar_linea()
                     ],
             yAxes: [
                 {
+
+                      ticks: {
+                            beginAtZero: true,
+                            steps: 2,
+                            stepValue: 100,
+
+                        },
                     scaleLabel: 
                     {
                         display: true,
@@ -210,7 +228,13 @@ function dibujar_linea()
                       }
                       ],
               yAxes: [
-                  {
+                  {          
+                ticks: {
+                    beginAtZero: true,
+                    steps: 1,
+                    stepValue: 5,
+
+                },
 
                       scaleLabel: 
                       {
@@ -283,7 +307,9 @@ function dibujar_linea()
             scales: {
   
                 xAxes: [
-                        {
+                        {  ticks: {
+                            padding: 20
+                          },
   
                             scaleLabel: 
                             {
@@ -296,7 +322,13 @@ function dibujar_linea()
                         }
                         ],
                 yAxes: [
-                    {
+                    {  
+                        ticks: {
+                            beginAtZero: true,
+                            steps: 2,
+                            stepValue: 100,
+                            max: 50
+                        },
   
                         scaleLabel: 
                         {
