@@ -63,6 +63,7 @@ function dibujar_linea()
     console.log("a="+a);
     console.log("b="+b);
     console.log("c="+c);
+
     cx=2.5e-9*a/(b+50e-6*(c+50e-6))
     console.log("x "+cx);
     cx1=5e-9*a/(b+50e-6*(c+50e-6))
@@ -85,7 +86,9 @@ function dibujar_linea()
     // cy2=(4*b-2*c*Tm+Tm*Tm)/(4*b+2*c*Tm+Tm*Tm);
     // console.log("y2 "+cy2);
     
-
+    function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
 
     var y2=0;
@@ -99,8 +102,10 @@ function dibujar_linea()
     var yValues = [];
     var xValues = [];
   
-    while (contador < 50)
+
+        while (contador < 50)
     {
+
         x=1;
         res=cy2*y2+cy1*y1 + cx2*x2 +cx1*x1 +cx*x;
         xValues[contador]=res.toFixed(2);
